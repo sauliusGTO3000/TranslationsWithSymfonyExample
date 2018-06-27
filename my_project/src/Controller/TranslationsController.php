@@ -24,7 +24,7 @@ class TranslationsController extends Controller
     {
 
         $translated = $translator->trans('Hello world, I can speak English!');
-        echo $translated;
+//        echo $translated;
         return $this->render('translations/index.html.twig', ['translations' => $translationsRepository->findAll()]);
     }
 

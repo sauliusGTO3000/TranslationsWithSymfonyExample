@@ -4,8 +4,19 @@
 
 {% block body %}
     <h1>Translations index</h1>
-    <a href="{{ path('locale_controller', {'lang': 'lt'}) }}">Translate To Lithuanian</a>
-    <a href="{{ path('locale_controller', {'lang': 'de'}) }}">Translate to German</a>
+    {% if  app.request.locale  == 'en' %}
+        <a href="{{ path('locale_controller', {'lang': 'lt'}) }}">Translate To Lithuanian</a>
+        <a href="{{ path('locale_controller', {'lang': 'de'}) }}">Translate to German</a>
+
+    {% elseif   app.request.locale  == 'de'%}
+        <a href="{{ path('locale_controller', {'lang': 'lt'}) }}">Übersetzen auf Litauisch</a>
+        <a href="{{ path('locale_controller', {'lang': 'en'}) }}">Übersetzen auf Englisch</a>
+
+    {% elseif  app.request.locale  == 'lt' %}
+        <a href="{{ path('locale_controller', {'lang': 'en'}) }}">Versti į anglų kalbą</a>
+        <a href="{{ path('locale_controller', {'lang': 'de'}) }}">Versti į vokiečių kalbą</a>
+    {% endif %}
+
     <table class="table">
         <thead>
             <tr>
@@ -20,7 +31,11 @@
             <tr>
                 <td>{{ translation.id }}</td>
                 <td>{{ translation.name }}</td>
-                <td>{{ translation.translatedValue }}</td>
+                <td>
+
+                        {{ translation.translatedValue|trans }}
+                    
+                </td>
                 <td>
                     <a href="{{ path('translations_show', {'id': translation.id}) }}">show</a>
                     <a href="{{ path('translations_edit', {'id': translation.id}) }}">edit</a>

@@ -26,7 +26,7 @@ class LocaleListener
         $request = $event->getRequest();
 
         $request->setLocale($this->session->get('lang', 'en') );
-        var_dump($this->session->get('lang'));
+//        var_dump($this->session->get('lang'));
     }
 
 }
