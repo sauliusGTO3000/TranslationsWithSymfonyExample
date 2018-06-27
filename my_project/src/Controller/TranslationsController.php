@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Translation\TranslatorInterface;
 
+
 /**
  * @Route("/translations")
  */
@@ -21,6 +22,7 @@ class TranslationsController extends Controller
      */
     public function index(TranslationsRepository $translationsRepository, TranslatorInterface $translator): Response
     {
+
         $translated = $translator->trans('Hello world, I can speak English!');
         echo $translated;
         return $this->render('translations/index.html.twig', ['translations' => $translationsRepository->findAll()]);

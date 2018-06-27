@@ -4,7 +4,8 @@
 
 {% block body %}
     <h1>Translations index</h1>
-
+    <a href="{{ path('locale_controller', {'lang': 'lt'}) }}">Translate To Lithuanian</a>
+    <a href="{{ path('locale_controller', {'lang': 'de'}) }}">Translate to German</a>
     <table class="table">
         <thead>
             <tr>
